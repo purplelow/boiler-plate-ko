@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import Axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { loginUser } from '../../../_actions/user_action'
+import React, { useState } from 'react';
+import Axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../_actions/user_action';
+import { withRouter } from 'react-router-dom';
 
 function LoginPage(props) {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function LoginPage(props) {
 
         dispatch(loginUser(body))
             .then(response => {
-                if(response.payload.loginSuccess) {
+                if (response.payload.loginSuccess) {
                     props.history.push('/')
                 } else {
                     alert('Error')
@@ -38,9 +39,9 @@ function LoginPage(props) {
 
     return (
         <div style={{
-            display: 'flex', justifyContent: 'center', alignItems: 'center', width:'100%', height: '100vh'
+            display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh'
         }}>
-            
+
             <form style={{ display: 'flex', flexDirection: 'column' }}
                 onSubmit={onsubmitHandler}
             >

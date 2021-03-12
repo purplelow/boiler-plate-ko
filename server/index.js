@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/api/hello', (req,res) => {
+app.get('/api/hello', (req, res) => {
     res.send("안녕하세요!!")
 })
 
@@ -75,7 +75,6 @@ app.post('/api/users/login', (req, res) => {
 })
 
 app.get('/api/users/auth', auth, (req, res) => {
-
     // 여기 까지 미들웨어를 통과해 왔다는 얘기는 Authentication 이 True 라는 말.
     res.status(200).json({
         _id: req.user._id,
@@ -91,7 +90,7 @@ app.get('/api/users/auth', auth, (req, res) => {
 })
 
 app.get('/api/users/logout', auth, (req, res) => {
-console.log('req.user', req.user)
+    console.log('req.user', req.user)
     User.findOneAndUpdate({ _id: req.user._id },
         { token: "" }
         , (err, user) => {
